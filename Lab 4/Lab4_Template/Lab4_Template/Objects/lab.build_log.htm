@@ -1,0 +1,123 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: µVision V5.36.0.0
+Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Hayden Feddock, Student, LIC=----
+ 
+Tool Versions:
+Toolchain:       MDK-Lite  Version: 5.36.0.0
+Toolchain Path:  C:\Keil_v5\ARM\ARMCLANG\Bin
+C Compiler:      ArmClang.exe V6.16
+Assembler:       Armasm.exe V6.16
+Linker/Locator:  ArmLink.exe V6.16
+Library Manager: ArmAr.exe V6.16
+Hex Converter:   FromElf.exe V6.16
+CPU DLL:         SARMCM3.DLL V5.36.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
+Dialog DLL:      TCM.DLL V1.53.0.0
+ 
+<h2>Project:</h2>
+C:\Users\hayde\OneDrive\Pitt\2021-2022 Spring Term\ECE 202\Lab 4\Lab4_Template\Lab4_Template\lab.uvprojx
+Project File Date:  03/16/2022
+
+<h2>Output:</h2>
+*** Using Compiler 'V6.16', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
+Build target 'Target 1'
+"main.s", line 115 (column 10): Warning: A1865W: '#' not seen before constant expression
+  115 00000074  MOV r10, 0x0
+                        ^
+"main.s", line 121 (column 11): Warning: A1865W: '#' not seen before constant expression
+  121 00000082  MOVNE r5, 49                    ; Move an ascii value into r5
+                         ^
+"main.s", line 127 (column 11): Warning: A1865W: '#' not seen before constant expression
+  127 0000008e  MOVNE r5, 50                    ; Move an ascii value into r5
+                         ^
+"main.s", line 133 (column 11): Warning: A1865W: '#' not seen before constant expression
+  133 0000009a  MOVNE r5, 51                    ; Move an ascii value into r5
+                         ^
+"main.s", line 139 (column 11): Warning: A1865W: '#' not seen before constant expression
+  139 000000a6  MOVNE r5, 65                    ; Move an ascii value into r5
+                         ^
+"main.s", line 149 (column 10): Warning: A1865W: '#' not seen before constant expression
+  149 000000b8  MOV r10, 0x0
+                        ^
+"main.s", line 155 (column 9): Warning: A1865W: '#' not seen before constant expression
+  155 000000c6  MOV r5, 52                    ; Move an ascii value into r5
+                       ^
+"main.s", line 161 (column 9): Warning: A1865W: '#' not seen before constant expression
+  161 000000d2  MOV r5, 53                    ; Move an ascii value into r5
+                       ^
+"main.s", line 167 (column 9): Warning: A1865W: '#' not seen before constant expression
+  167 000000de  MOV r5, 54                    ; Move an ascii value into r5
+                       ^
+"main.s", line 173 (column 9): Warning: A1865W: '#' not seen before constant expression
+  173 000000ea  MOV r5, 66                    ; Move an ascii value into r5
+                       ^
+"main.s", line 184 (column 10): Warning: A1865W: '#' not seen before constant expression
+  184 000000fc  MOV r10, 0x0
+                        ^
+"main.s", line 190 (column 9): Warning: A1865W: '#' not seen before constant expression
+  190 0000010a  MOV r5, 55                    ; Move an ascii value into r5
+                       ^
+"main.s", line 196 (column 9): Warning: A1865W: '#' not seen before constant expression
+  196 00000116  MOV r5, 56                    ; Move an ascii value into r5
+                       ^
+"main.s", line 202 (column 9): Warning: A1865W: '#' not seen before constant expression
+  202 00000122  MOV r5, 57                    ; Move an ascii value into r5
+                       ^
+"main.s", line 208 (column 9): Warning: A1865W: '#' not seen before constant expression
+  208 0000012e  MOV r5, 67                    ; Move an ascii value into r5
+                       ^
+"main.s", line 219 (column 10): Warning: A1865W: '#' not seen before constant expression
+  219 00000140  MOV r10, 0x0
+                        ^
+"main.s", line 225 (column 9): Warning: A1865W: '#' not seen before constant expression
+  225 0000014e  MOV r5, 42                    ; Move an ascii value into r5
+                       ^
+"main.s", line 231 (column 9): Warning: A1865W: '#' not seen before constant expression
+  231 0000015a  MOV r5, 48                    ; Move an ascii value into r5
+                       ^
+"main.s", line 237 (column 9): Warning: A1865W: '#' not seen before constant expression
+  237 00000166  MOV r5, 35                    ; Move an ascii value into r5
+                       ^
+"main.s", line 243 (column 9): Warning: A1865W: '#' not seen before constant expression
+  243 00000172  MOV r5, 68                    ; Move an ascii value into r5
+                       ^
+0 Errors, 20 Warnings
+assembling main.s...
+linking...
+.\Objects\lab.sct(8): warning: L6314W: No section matches pattern *(InRoot$$Sections).
+Program Size: Code=1264 RO-data=392 RW-data=4 ZI-data=1540  
+Finished: 0 information, 1 warning and 0 error messages.
+FromELF: creating hex file...
+".\Objects\lab.axf" - 0 Error(s), 1 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.8.0.pack
+                ARM.CMSIS.5.8.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.5.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32L4xx_DFP.2.6.1.pack
+                Keil.STM32L4xx_DFP.2.6.1
+                STMicroelectronics STM32L4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\_Target_1
+  C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.8.0\CMSIS\Core\Include
+  C:\Keil_v5\ARM\PACK\Keil\STM32L4xx_DFP\2.6.1\Drivers\CMSIS\Device\ST\STM32L4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:5.5.0
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>

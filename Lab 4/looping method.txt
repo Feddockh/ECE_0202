@@ -1,0 +1,68 @@
+
+; loopRow
+	; Manually go through each row and each column for each row
+	; r0 for masking ODR and checking IDR
+	; r1 for incrementing the columns
+	; r2 for incrementing the rows
+	; r3 holding 0x4 for multiplication
+	; r4 for calculating the ascii value array offset
+	; r5 should be given the ascii value from the array for the function
+	; r7 is the address of the ascii value array
+	
+	; Iterate through rows 1 to 4 (pins 0, 1, 2, and 3)
+	; r0 needs to be set so that it will have a 0 at the desired row's pin location
+	MOV r0, #0x1                  ; Put a bit in r0
+	LSL r0, r2                    ; Shift the bit by the current row number (r2)
+	LSR r0, #0x1                  ; Shift back once (accounts for beginning row at 1)
+	MVN r12, r0                   ; Move not the shifted bit into the r12 to move to the ODR
+	STR r12, [r11, #GPIO_ODR]     ; Store r12 to the GPIOC ODR with GPIOC offset r11 and the ODR shift
+	; Now only the current row is pulled down and we can check each column
+	
+	; Return the updated IDR value for the pulled down row
+	LDR r10, [r9, #GPIO_IDR]      ; Load in the IDR register address into r10 from r9
+	MVN r10, r10                  ; Invert the value in r10 so that we can look for a 1 instead of a zero
+
+	
+	; Error: we are checking the opposite
+	; Error: r2 is zero first time
+	; Check column 1
+	ADD r1, #0x1                  ; Increment column number in r1
+	AND r0, r10, #0x2             ; Mask IDR with 0x2 because pin 1 and store in r0
+	CMP r0, #0x2                  ; Compare the masked IDR in r0 to 0x2
+	MUL r4, r1, r2                ; Multiply the current column (r1) and row (r2) and store in r4
+	MUL r4, r3                    ; Mutliply the value in r4 by 4 (r3) because each value in the array takes up 4 bytes
+	LDR r5, [r7, r4]              ; Load the array value with the r4 offset
+	BNE displaykey                ; Call the display key function with the ASCII value in r5
+	
+	; Check column 2
+	ADD r1, #0x1                  ; Increment column number in r1
+	AND r0, r10, #0x4             ; Mask IDR with 0x4 because pin 2 and store in r0
+	CMP r0, #0x4                  ; Compare the masked IDR in r0 to 0x4
+	MUL r4, r1, r2                ; Multiply the current column (r1) and row (r2) and store in r4
+	MUL r4, r3                    ; Mutliply the value in r4 by 4 (r3) because each value in the array takes up 4 bytes
+	LDR r5, [r7, r4]              ; Load the array value with the r4 offset
+	BNE displaykey                ; Call the display key function with the ASCII value in r5
+	
+	; Check column 3
+	ADD r1, #0x1                  ; Increment column number in r1
+	AND r0, r10, #0x8             ; Mask IDR with 0x8 because pin 3 and store in r0
+	CMP r0, #0x8                  ; Compare the masked IDR in r0 to 0x8
+	MUL r4, r1, r2                ; Multiply the current column (r1) and row (r2) and store in r4
+	MUL r4, r3                    ; Mutliply the value in r4 by 4 (r3) because each value in the array takes up 4 bytes
+	LDR r5, [r7, r4]              ; Load the array value with the r4 offset
+	BNE displaykey                ; Call the display key function with the ASCII value in r5
+	
+	; Check column 4
+	ADD r1, #0x1                  ; Increment column number in r1
+	AND r0, r10, #0x20            ; Mask IDR with 0x20 because pin 3 and store in r0
+	CMP r0, #0x20                 ; Compare the masked IDR in r0 to 0x20
+	MUL r4, r1, r2                ; Multiply the current column (r1) and row (r2) and store in r4
+	MUL r4, r3                    ; Mutliply the value in r4 by 4 (r3) because each value in the array takes up 4 bytes
+	LDR r5, [r7, r4]              ; Load the array value with the r4 offset
+	BNE displaykey                ; Call the display key function with the ASCII value in r5
+	
+	; Increment and check if we are at the last row
+	ADD r2, #0x1                  ; Increment the current row number
+	CMP r2, #0x4                  ; If we are at the last row exit the loop
+	BLT loopRow
+	
